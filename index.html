@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFD Propiedades - Debora Fernandez Dios</title>
+    <style>
+        /* Estética Premium Rosario */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+            line-height: 1.6;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Header con Logo e Info */
+        header {
+            background-color: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 5px solid #1B3022;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo { max-height: 140px; width: auto; }
+
+        .header-right { text-align: right; }
+
+        .contact-box {
+            background: #1B3022;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
+
+        /* Menú de Navegación */
+        nav { margin-top: 10px; }
+        nav a {
+            text-decoration: none;
+            color: #1B3022;
+            font-weight: bold;
+            margin-left: 20px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 48, 34, 0.8), rgba(27, 48, 34, 0.7)), 
+                        url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .hero h2 { font-size: 40px; margin-bottom: 10px; }
+
+        /* Sección Propiedades */
+        .seccion-propiedades { padding: 80px 5%; background: #f9f9f9; }
+        .titulo-seccion { text-align: center; color: #1B3022; margin-bottom: 40px; font-size: 28px; }
+
+        .grid-propiedades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card-img { width: 100%; height: 230px; object-fit: cover; }
+
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .card-precio { font-size: 24px; font-weight: bold; color: #1B3022; margin-bottom: 10px; }
+
+        .card-titulo { font-size: 18px; margin: 0 0 10px 0; min-height: 50px; }
+
+        .card-ubicacion { font-size: 13px; color: #7f8c8d; margin-bottom: 20px; }
+
+        .btn-wsp-card {
+            background-color: #1B3022;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: auto;
+            display: block;
+        }
+
+        /* Sección Calculadora */
+        .seccion-calculadora { padding: 80px 5%; background: #ffffff; text-align: center; }
+        .calc-container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: #f4f4f4; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; font-size: 14px; font-weight: bold; color: #1B3022; }
+        .input-group input { 
+            width: 100%; padding: 12px; margin-top: 5px; border-radius: 6px; 
+            border: 1px solid #ddd; box-sizing: border-box;
+        }
+        .btn-calc { 
+            background: #1B3022; color: white; border: none; padding: 15px; 
+            border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; font-size: 16px;
+        }
+        .resultado-box { 
+            margin-top: 25px; padding: 20px; background: #e9f5ee; 
+            border-radius: 8px; display: none; border: 1px solid #1B3022;
+        }
+
+        /* Botón WhatsApp Flotante */
+        .wsp-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 10000;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        footer { background: #1B3022; color: white; padding: 40px; text-align: center; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; gap: 15px; }
+            .hero h2 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://lh3.googleusercontent.com/d/1xo206N0S2wadvjqb9gBvvkr5NKx1uvya" alt="DFD Propiedades Logo" class="brand-logo">
+        
+        <div class="header-right">
+            <div class="contact-box">
+                <strong>Debora Fernandez Dios</strong> | Mat. CI 468<br>
+                <span>Instagram: <a href="https://www.instagram.com/dfdpropiedades/" target="_blank">@dfdpropiedades</a></span>
+            </div>
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#propiedades">Propiedades</a>
+                <a href="#calculadora">Inversiones</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>VENTA Y ALQUILER EN ROSARIO</h2>
+        <p>Tu próxima inversión inmobiliaria con el respaldo de un profesional colegiado.</p>
+    </section>
+
+    <section id="propiedades" class="seccion-propiedades">
+        <h2 class="titulo-seccion">Propiedades destacadas</h2>
+        
+        <div class="grid-propiedades">
+            
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/d/1t0Li8wMzTx9aRvhpZxwoq-moBryPNjaF" class="card-img" alt="Casa en Superi">
+                <div class="card-body">
+                    <div class="card-precio">USD 400.000</div>
+                    <h3 class="card-titulo">Casa de 3 dormitorios con escritorio independiente</h3>
+                    <p class="card-ubicacion">Comandante José Superí 440, Rosario</p>
+                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20quiero%20consultarte%20por%20la%20Casa%20en%20Superi%20440" class="btn-wsp-card" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/d/1WmSAx351m7DJCXhdWSpDzS6UXlKQs24n" class="card-img" alt="Depto en Barrancas">
+                <div class="card-body">
+                    <div class="card-precio">USD 400.000</div>
+                    <h3 class="card-titulo">Departamento de 3 dormitorios con vista al Río Paraná</h3>
+                    <p class="card-ubicacion">Complejo Barrancas del Alberdi - Rosario</p>
+                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20quiero%20consultarte%20por%20el%20Depto%20en%20Barrancas%20del%20Alberdi" class="btn-wsp-card" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/d/1YF8CkycsBGZiBzgXuTGPy_-AC0uYdWw3" class="card-img" alt="Duplex La Florida">
+                <div class="card-body">
+                    <div class="card-precio">USD 149.000</div>
+                    <h3 class="card-titulo">Dúplex de 2 dormitorios - Barrio La Florida</h3>
+                    <p class="card-ubicacion">Iturraspe 4200, Rosario</p>
+                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20quiero%20consultarte%20por%20el%20Duplex%20en%20La%20Florida" class="btn-wsp-card" target="_blank">Consultar por whatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="calculadora" class="seccion-calculadora">
+        <h2 style="color: #1B3022;">¿Invertir o alquilar?</h2>
+        <p>Calculá la rentabilidad bruta anual de tu inversión inmobiliaria.</p>
+        
+        <div class="calc-container">
+            <div class="input-group">
+                <label>Valor de la propiedad (USD):</label>
+                <input type="number" id="valorPropiedad" placeholder="Ej: 100000">
+            </div>
+            <div class="input-group">
+                <label>Alquiler mensual estimado (USD):</label>
+                <input type="number" id="alquilerMensual" placeholder="Ej: 500">
+            </div>
+            <div class="input-group">
+                <label>Gastos anuales estimados (USD):</label>
+                <input type="number" id="gastosAnuales" placeholder="Ej: 600" value="0">
+            </div>
+            <button onclick="calcularRentabilidad()" class="btn-calc">Calcular Retorno Neto</button>
+            
+            <div id="resultado" class="resultado-box">
+                <h4 style="margin: 0; color: #1B3022;">Rentabilidad anual estimada:</h4>
+                <p id="porcentajeResultado" style="font-size: 28px; font-weight: bold; color: #1B3022; margin: 10px 0;"></p>
+                <p id="detalleResultado" style="font-size: 14px; color: #7f8c8d;"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>DFD PROPIEDADES - NEGOCIOS INMOBILIARIOS</strong></p>
+        <p>Rosario, Santa Fe | Matrícula CI 468</p>
+        <p>Teléfonos: 341-3195934 | 341-2156073</p>
+    </footer>
+
+    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20estoy%20viendo%20tu%20web%20y%20quería%20hacerte%20una%20consulta" class="wsp-flotante" target="_blank">
+        <svg style="width: 35px; fill: white;" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.4-.3-8.3 2.4-11.1 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.3 3.7-5.6 5.5-9.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <script>
+        function calcularRentabilidad() {
+            const valor = parseFloat(document.getElementById('valorPropiedad').value);
+            const alquiler = parseFloat(document.getElementById('alquilerMensual').value);
+            const gastos = parseFloat(document.getElementById('gastosAnuales').value) || 0;
+            const divResultado = document.getElementById('resultado');
+            const pPorcentaje = document.getElementById('porcentajeResultado');
+            const pDetalle = document.getElementById('detalleResultado');
+
+            if (valor > 0 && alquiler > 0) {
+                const ingresoAnual = (alquiler * 12) - gastos;
+                const rentabilidad = (ingresoAnual / valor) * 100;
+                
+                pPorcentaje.innerText = rentabilidad.toFixed(2) + '% Anual';
+                pDetalle.innerText = "Ingreso neto estimado: USD " + ingresoAnual.toLocaleString() + " / año";
+                divResultado.style.display = 'block';
+            } else {
+                alert("Por favor, ingresá los valores de propiedad y alquiler.");
+            }
+        }
+    </script>
+
+</body>
+</html>
