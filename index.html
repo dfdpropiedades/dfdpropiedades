@@ -199,10 +199,6 @@
                 <label>Alquiler mensual estimado (USD):</label>
                 <input type="number" id="alquilerMensual" placeholder="Ej: 500">
             </div>
-            <div class="input-group">
-                <label>Gastos anuales estimados (USD):</label>
-                <input type="number" id="gastosAnuales" placeholder="Ej: 600" value="0">
-            </div>
             <button onclick="calcularRentabilidad()" class="btn-calc">Calcular Retorno Neto</button>
             
             <div id="resultado" class="resultado-box">
@@ -227,13 +223,12 @@
         function calcularRentabilidad() {
             const valor = parseFloat(document.getElementById('valorPropiedad').value);
             const alquiler = parseFloat(document.getElementById('alquilerMensual').value);
-            const gastos = parseFloat(document.getElementById('gastosAnuales').value) || 0;
             const divResultado = document.getElementById('resultado');
             const pPorcentaje = document.getElementById('porcentajeResultado');
             const pDetalle = document.getElementById('detalleResultado');
 
             if (valor > 0 && alquiler > 0) {
-                const ingresoAnual = (alquiler * 12) - gastos;
+                const ingresoAnual = (alquiler * 12);
                 const rentabilidad = (ingresoAnual / valor) * 100;
                 
                 pPorcentaje.innerText = rentabilidad.toFixed(2) + '% Anual';
