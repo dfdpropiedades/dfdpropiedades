@@ -30,21 +30,31 @@
         .seccion-propiedades { padding: 40px 5%; background: #f9f9f9; }
         .grid-propiedades { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s; display: flex; flex-direction: column; height: 100%; position: relative; }
         .card:hover { transform: translateY(-5px); }
-        .card-img { width: 100%; height: 200px; object-fit: cover; }
-        .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         
-        .etiqueta { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        /* Contenedor de imagen y cartel alquilado */
+        .img-container { position: relative; width: 100%; height: 200px; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; }
+        .badge-alquilado { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg);
+            background: rgba(192, 57, 43, 0.9); color: white; padding: 10px 30px; font-weight: bold;
+            font-size: 20px; border: 3px solid white; z-index: 10; pointer-events: none;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+
+        .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .etiqueta { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; align-self: flex-start; }
         .venta { background: #e9f5ee; color: #1B3022; }
         .alquiler { background: #fff4e5; color: #d35400; }
         
         .card-precio { font-size: 22px; font-weight: bold; color: #1B3022; margin-bottom: 5px; }
         .card-titulo { font-size: 17px; margin: 0 0 10px 0; min-height: 45px; }
         .card-ubicacion { font-size: 13px; color: #7f8c8d; margin-bottom: 15px; }
+        
         .btn-wsp-card { background-color: #1B3022; color: white; text-decoration: none; text-align: center; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 14px; margin-top: auto; }
+        .btn-disabled { background-color: #bdc3c7; cursor: not-allowed; }
 
-        /* Estilos Calculadora */
         .seccion-calculadora { padding: 60px 5%; background: #ffffff; text-align: center; }
         .calc-container { max-width: 500px; margin: 0 auto; background: #f4f4f4; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .input-group { margin-bottom: 15px; text-align: left; }
@@ -54,17 +64,13 @@
         .btn-calc:hover { background: #25422f; }
         .resultado-box { margin-top: 25px; padding: 20px; background: #e9f5ee; border-radius: 8px; display: none; border: 1px solid #1B3022; }
 
-        /* Botón WhatsApp Flotante */
         .wsp-flotante {
             position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366;
             color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
             z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none;
         }
-        .wsp-flotante:hover { background-color: #128c7e; transform: scale(1.1); transition: 0.3s; }
 
         footer { background: #1B3022; color: white; padding: 40px; text-align: center; }
-        footer p { margin: 5px 0; }
-
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
             .brand-logo { max-height: 100px; }
@@ -89,107 +95,15 @@
 
     <section class="hero">
         <h2>SOLUCIONES INMOBILIARIAS EN ROSARIO</h2>
-        <p>Ofrecemos un servicio integral orientado a acompañarte en cada etapa de tu decisión inmobiliaria, combinando experiencia en el mercado con asesoramiento financiero estratégico.</p>
+        <p>Acompañamos cada etapa de tu decisión inmobiliaria con experiencia y asesoramiento financiero estratégico.</p>
     </section>
 
     <section id="propiedades" class="seccion-propiedades">
-        <div class="grid-propiedades">
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/carilo.jpeg" class="card-img" alt="Carilo">
-                <div class="card-body">
-                    <span class="etiqueta alquiler">Alquiler Temporario</span>
-                    <div class="card-precio">Consultar</div>
-                    <h3 class="card-titulo">Casa en Cariló | Capacidad 6 personas</h3>
-                    <p class="card-ubicacion">A 3 cuadras del centro, Cariló</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Carilo" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/agrelo.jpeg" class="card-img" alt="Agrelo">
-                <div class="card-body">
-                    <span class="etiqueta alquiler">Alquiler Temporario</span>
-                    <div class="card-precio">Consultar</div>
-                    <h3 class="card-titulo">Depto 2 dormitorios con Quincho y Piscina</h3>
-                    <p class="card-ubicacion">Agrelo 2262, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Agrelo" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/barrancas.jpg" class="card-img" alt="Barrancas">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta y Alquiler</span>
-                    <div class="card-precio">USD 400.000</div>
-                    <h3 class="card-titulo">Unidades de 2 y 3 dormitorios - Vista al Río</h3>
-                    <p class="card-ubicacion">Complejo Barrancas del Alberdi, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Barrancas" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/galpon.jpeg" class="card-img" alt="Galpon">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta</span>
-                    <div class="card-precio">Consultar</div>
-                    <h3 class="card-titulo">Galpón Industrial en Barrio Ludueña</h3>
-                    <p class="card-ubicacion">Vélez Sársfield 6764, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Galpon" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/local.jpeg" class="card-img" alt="Local">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta</span>
-                    <div class="card-precio">USD 72.500</div>
-                    <h3 class="card-titulo">Local Comercial | Bajada Sargento Cabral</h3>
-                    <p class="card-ubicacion">Sargento Cabral 500, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Local%20Sargento%20Cabral" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/agote.jpeg" class="card-img" alt="Agote">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta</span>
-                    <div class="card-precio">USD 62.000</div>
-                    <h3 class="card-titulo">Depto 2 dormitorios | Barrio Luis Agote</h3>
-                    <p class="card-ubicacion">San Nicolás 200, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Depto%20San%20Nicolas" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/superi.jpg" class="card-img" alt="Superi">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta</span>
-                    <div class="card-precio">USD 400.000</div>
-                    <h3 class="card-titulo">Casa de 3 dormitorios con escritorio</h3>
-                    <p class="card-ubicacion">Comandante José Superí 440, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Superi" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/florida.jpg" class="card-img" alt="Florida">
-                <div class="card-body">
-                    <span class="etiqueta venta">Venta</span>
-                    <div class="card-precio">USD 149.000</div>
-                    <h3 class="card-titulo">Dúplex de 2 dormitorios - La Florida</h3>
-                    <p class="card-ubicacion">Iturraspe 4200, Rosario</p>
-                    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20Florida" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>
-                </div>
-            </div>
-
-        </div>
+        <div id="lista-propiedades" class="grid-propiedades"></div>
     </section>
 
     <section id="calculadora" class="seccion-calculadora">
         <h2 style="color: #1B3022;">¿Invertir o alquilar?</h2>
-        <p>Calculá la rentabilidad neta anual de tu inversión inmobiliaria.</p>
-        
         <div class="calc-container">
             <div class="input-group">
                 <label>Valor de la propiedad (USD):</label>
@@ -200,9 +114,7 @@
                 <input type="number" id="alquilerMensual" placeholder="Ej: 500">
             </div>
             <button onclick="calcularRentabilidad()" class="btn-calc">Calcular Retorno Neto</button>
-            
             <div id="resultado" class="resultado-box">
-                <h4 style="margin: 0; color: #1B3022;">Rentabilidad anual estimada:</h4>
                 <p id="porcentajeResultado" style="font-size: 28px; font-weight: bold; color: #1B3022; margin: 10px 0;"></p>
                 <p id="detalleResultado" style="font-size: 14px; color: #7f8c8d;"></p>
             </div>
@@ -215,32 +127,161 @@
         <p>Teléfonos: 341-3195934 | 341-2156073</p>
     </footer>
 
-    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20estoy%20viendo%20tu%20web%20y%20quería%20hacerte%20una%20consulta" class="wsp-flotante" target="_blank">
+    <a href="https://wa.me/5493413195934?text=Hola%20Debora,%20vi%20tu%20web" class="wsp-flotante" target="_blank">
         <svg style="width: 30px; fill: white;" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.4-.3-8.3 2.4-11.1 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.3 3.7-5.6 5.5-9.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
     </a>
 
     <script>
+        // --- BASE DE DATOS DE PROPIEDADES ---
+        const dbPropiedades = [
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/corrientes.jpg",
+                precio: "USD 85.000",
+                titulo: "Departamento 2 dormitorios en Barrio Abasto",
+                ubicacion: "Corrientes 2154, Rosario",
+                linkWsp: "Depto%20Abasto%20Corrientes",
+                alquilado: false
+            },
+            {
+                tipo: "alquiler",
+                etiqueta: "Alquiler Comercial",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/local.jpeg",
+                precio: "Consultar",
+                titulo: "Local comercial en alquiler – Galería Favorita",
+                ubicacion: "Córdoba 1146, Rosario",
+                linkWsp: "Local%20Favorita",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/leguizamon.png",
+                precio: "USD 72.000",
+                titulo: "Departamento con 2 dormitorios - Zona Arroyito",
+                ubicacion: "Leguizamón 742, Rosario",
+                linkWsp: "Depto%20Arroyito%20Leguizamon",
+                alquilado: false
+            },
+            {
+                tipo: "alquiler",
+                etiqueta: "Alquiler",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/agrelo.jpeg",
+                precio: "ALQUILADO",
+                titulo: "Depto 2 dormitorios con Quincho y Piscina",
+                ubicacion: "Agrelo 2262, Rosario",
+                linkWsp: "#",
+                alquilado: true 
+            },
+            {
+                tipo: "alquiler", 
+                etiqueta: "Alquiler Temporario",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/carilo.jpeg",
+                precio: "Consultar",
+                titulo: "Casa en Cariló | Capacidad 6 personas",
+                ubicacion: "A 3 cuadras del centro, Cariló",
+                linkWsp: "Carilo",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta y Alquiler",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/barrancas.jpg",
+                precio: "USD 400.000",
+                titulo: "Unidades de 2 y 3 dormitorios - Vista al Río",
+                ubicacion: "Complejo Barrancas del Alberdi, Rosario",
+                linkWsp: "Barrancas",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/galpon.jpeg",
+                precio: "Consultar",
+                titulo: "Galpón Industrial en Barrio Ludueña",
+                ubicacion: "Vélez Sársfield 6764, Rosario",
+                linkWsp: "Galpon",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/local.jpeg",
+                precio: "USD 72.500",
+                titulo: "Local Comercial | Bajada Sargento Cabral",
+                ubicacion: "Sargento Cabral 500, Rosario",
+                linkWsp: "Local%20Sargento%20Cabral",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/agote.jpeg",
+                precio: "USD 62.000",
+                titulo: "Depto 2 dormitorios | Barrio Luis Agote",
+                ubicacion: "San Nicolás 200, Rosario",
+                linkWsp: "Depto%20San%20Nicolas",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/superi.jpg",
+                precio: "USD 400.000",
+                titulo: "Casa de 3 dormitorios con escritorio",
+                ubicacion: "Comandante José Superí 440, Rosario",
+                linkWsp: "Superi",
+                alquilado: false
+            },
+            {
+                tipo: "venta",
+                etiqueta: "Venta",
+                img: "https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/florida.jpg",
+                precio: "USD 149.000",
+                titulo: "Dúplex de 2 dormitorios - La Florida",
+                ubicacion: "Iturraspe 4200, Rosario",
+                linkWsp: "Florida",
+                alquilado: false
+            }
+        ];
+
+        function cargarPropiedades() {
+            const contenedor = document.getElementById('lista-propiedades');
+            contenedor.innerHTML = dbPropiedades.map(p => `
+                <div class="card">
+                    <div class="img-container">
+                        ${p.alquilado ? '<div class="badge-alquilado">ALQUILADO</div>' : ''}
+                        <img src="${p.img}" class="card-img" alt="${p.titulo}">
+                    </div>
+                    <div class="card-body">
+                        <span class="etiqueta ${p.tipo}">${p.etiqueta}</span>
+                        <div class="card-precio">${p.precio}</div>
+                        <h3 class="card-titulo">${p.titulo}</h3>
+                        <p class="card-ubicacion">${p.ubicacion}</p>
+                        ${p.alquilado ? 
+                            '<span class="btn-wsp-card btn-disabled">No disponible</span>' : 
+                            `<a href="https://wa.me/5493413195934?text=Hola%20Debora,%20consulto%20por%20${p.linkWsp}" class="btn-wsp-card" target="_blank">Consultar WhatsApp</a>`
+                        }
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = cargarPropiedades;
+
         function calcularRentabilidad() {
             const valor = parseFloat(document.getElementById('valorPropiedad').value);
             const alquiler = parseFloat(document.getElementById('alquilerMensual').value);
             const divResultado = document.getElementById('resultado');
-            const pPorcentaje = document.getElementById('porcentajeResultado');
-            const pDetalle = document.getElementById('detalleResultado');
-
             if (valor > 0 && alquiler > 0) {
                 const ingresoAnual = (alquiler * 12);
                 const rentabilidad = (ingresoAnual / valor) * 100;
-                
-                pPorcentaje.innerText = rentabilidad.toFixed(2) + '% Anual';
-                pDetalle.innerText = "Ingreso neto estimado: USD " + ingresoAnual.toLocaleString() + " / año";
+                document.getElementById('porcentajeResultado').innerText = rentabilidad.toFixed(2) + '% Anual';
+                document.getElementById('detalleResultado').innerText = "Ingreso neto estimado: USD " + ingresoAnual.toLocaleString() + " / año";
                 divResultado.style.display = 'block';
-            } else {
-                alert("Por favor, ingresá los valores de propiedad y alquiler.");
-            }
+            } else { alert("Por favor, ingresá los valores."); }
         }
     </script>
-</body>
-</html>
-
 </body>
 </html>
