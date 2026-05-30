@@ -10,10 +10,19 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0; padding: 0; color: #2c3e50; line-height: 1.6; background-color: #ffffff; scroll-behavior: smooth;
         }
-        header {
-            background-color: #ffffff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 5px solid #1B3022; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
+       header {
+    background-color: transparent; /* Hace el fondo invisible para ver el hero detrás */
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute; /* Lo posiciona encima del contenido que sigue */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Lo mantiene al frente para que los botones sigan siendo clickeables */
+    box-sizing: border-box; /* Evita que el padding rompa el ancho del 100% */
+}
         .brand-logo { max-height: 140px; width: auto; }
         .header-right { text-align: right; }
         .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
@@ -21,11 +30,15 @@
         nav { margin-top: 10px; }
         nav a { text-decoration: none; color: #1B3022; font-weight: bold; margin-left: 20px; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
         
-        .hero {
-            background: linear-gradient(rgba(27, 48, 34, 0.8), rgba(27, 48, 34, 0.7)), 
-                        url('https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/rosario.jpg');
-            background-size: cover; background-position: center; color: white; padding: 60px 5%; text-align: center;
-        }
+       .hero {
+    background: linear-gradient(rgba(27, 48, 34, 0.8), rgba(27, 48, 34, 0.7)),
+                url('https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/rosario.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 140px 5% 60px 5%; /* Aumentamos el padding superior (140px) para bajar el texto */
+    text-align: center;
+}
 
         .seccion-propiedades { padding: 40px 5%; background: #f9f9f9; }
         .grid-propiedades { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
