@@ -10,12 +10,12 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0; padding: 0; color: #2c3e50; line-height: 1.6; background-color: #ffffff; scroll-behavior: smooth;
         }
-      header {
+    header {
     background-color: transparent !important;
     padding: 20px 5% !important;
     display: flex !important;
     justify-content: space-between !important;
-    align-items: center !important; /* Forza a alinear el logo y los botones al centro vertical */
+    align-items: center !important; /* Alinea logo y botones exactamente al mismo nivel horizontal */
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -23,19 +23,25 @@
     z-index: 1000 !important;
     box-sizing: border-box !important;
 }
-        .brand-logo { max-height: 300px; width: auto; }
+        .brand-logo { 
+    max-height: 80px !important; /* Un tamaño más compacto al estilo Vanzini */
+    width: auto !important; 
+}
         .header-right {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important; /* Empuja todo el bloque de botones a la derecha */
-    justify-content: flex-start !important;
+    flex-direction: row !important; /* Forza a que todo vaya en una sola línea */
+    align-items: center !important;  /* Centra verticalmente los botones con la caja negra */
+    gap: 25px !important;            /* Separa los botones entre sí */
     margin: 0 !important;
     padding: 0 !important;
 }
         .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
         .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
-       nav {
-    margin-top: 5px; /* Reduce la distancia con el cuadro superior de contacto */
+      nav {
+    margin-top: 0 !important; /* Quitamos el margen viejo que tiraba los botones hacia abajo */
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
 }
         nav a { text-decoration: none; color: #ffffff; font-weight: bold; margin-left: 20px; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
         
