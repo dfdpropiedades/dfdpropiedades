@@ -10,24 +10,31 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0; padding: 0; color: #2c3e50; line-height: 1.6; background-color: #ffffff; scroll-behavior: smooth;
         }
-       header {
-    background-color: transparent; /* Hace el fondo invisible para ver el hero detrás */
-    padding: 15px 5%;
+      header {
+    background-color: transparent;
+    padding: 20px 5%; /* Ajusta el espacio arriba y abajo del logo */
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: absolute; /* Lo posiciona encima del contenido que sigue */
-    top: 0;
+    align-items: center; /* Alinea verticalmente el logo y los botones al centro del menú */
+    position: absolute;
+    top: 0; /* Asegura que empiece bien desde arriba */
     left: 0;
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    z-index: 1000; /* Lo mantiene al frente para que los botones sigan siendo clickeables */
-    box-sizing: border-box; /* Evita que el padding rompa el ancho del 100% */
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
         .brand-logo { max-height: 300px; width: auto; }
-        .header-right { text-align: right; }
+        .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea todo a la derecha */
+    gap: 10px; /* Controla la separación entre el cuadro negro y los botones de abajo */
+}
         .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
         .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
-        nav { margin-top: 10px; }
+       nav {
+    margin-top: 5px; /* Reduce la distancia con el cuadro superior de contacto */
+}
         nav a { text-decoration: none; color: #ffffff; font-weight: bold; margin-left: 20px; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
         
       .hero {
