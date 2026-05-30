@@ -11,24 +11,26 @@
             margin: 0; padding: 0; color: #2c3e50; line-height: 1.6; background-color: #ffffff; scroll-behavior: smooth;
         }
       header {
-    background-color: transparent;
-    padding: 20px 5%; /* Ajusta el espacio arriba y abajo del logo */
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Alinea verticalmente el logo y los botones al centro del menú */
-    position: absolute;
-    top: 0; /* Asegura que empiece bien desde arriba */
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box;
+    background-color: transparent !important;
+    padding: 20px 5% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important; /* Forza a alinear el logo y los botones al centro vertical */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    box-sizing: border-box !important;
 }
         .brand-logo { max-height: 300px; width: auto; }
         .header-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Alinea todo a la derecha */
-    gap: 10px; /* Controla la separación entre el cuadro negro y los botones de abajo */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important; /* Empuja todo el bloque de botones a la derecha */
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
         .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
         .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
