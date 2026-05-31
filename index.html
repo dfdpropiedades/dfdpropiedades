@@ -54,32 +54,26 @@ header {
     text-align: center !important;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
     
-    /* Usamos flexbox para centrar de forma vertical el logo + textos */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    
-    min-height: 75vh !important; /* Le da un largo imponente a la imagen */
-    padding: 160px 5% 60px 5% !important; /* Evita que el menú superior pise el logo */
+    /* Cambiamos el comportamiento de centrado para controlar los espacios a mano */
+    display: block !important; 
+    min-height: 75vh !important;
+    padding-top: 180px !important; /* Espacio para que baje todo el bloque */
+    padding-bottom: 60px !important;
     box-sizing: border-box !important;
 }
 
-/* Nueva clase para el logo gigante en el centro de la foto */
-/* Nueva clase para el logo gigante en el centro de la foto */
-/* Modificación para arrastrar el logo hacia abajo, bien cerca del título */
 .hero-logo {
-    max-height: 220px !important; /* Lo hacemos más grande y visible */
+    display: block !important;
+    margin: 0 auto !important; /* Centra el logo horizontalmente */
+    max-height: 240px !important; /* Lo hacemos bien grande para notar el cambio */
     width: auto !important;
-    
-    /* Forzamos que baje empujándolo desde arriba y reduciendo el espacio con el título */
-    margin-top: 120px !important;   /* Aumentá este número si querés que baje todavía más */
-    margin-bottom: 10px !important; /* Espacio mínimo y controlado justo arriba del h1 */
-    
+    margin-bottom: -10px !important; /* Lo pega a la fuerza al título de abajo */
     filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.6)) !important;
-} /* Podés pegarlo justo acá, abajo de tus otros estilos del hero */
+}
+
 .hero h1 {
-    font-size: 28px !important;
+    display: block !important;
+    font-size: 26px !important; /* Letra notablemente más chica */
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     margin-top: 0 !important;
