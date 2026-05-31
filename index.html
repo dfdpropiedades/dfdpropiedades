@@ -67,13 +67,25 @@ header {
 
 /* Nueva clase para el logo gigante en el centro de la foto */
 /* Nueva clase para el logo gigante en el centro de la foto */
+/* Modificación para arrastrar el logo hacia abajo, bien cerca del título */
 .hero-logo {
-    max-height: 220px !important; /* Lo agrandamos de 150px a 220px */
+    max-height: 220px !important; /* Lo hacemos más grande y visible */
     width: auto !important;
-    margin-top: 80px !important;  /* Empuja el logo hacia abajo para que no quede pegado al menú */
-    margin-bottom: 25px !important; /* Mantiene el espacio elegante antes del título */
-    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.6)); /* Sombra un poco más definida para resaltar el tamaño */
-}      .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
+    
+    /* Forzamos que baje empujándolo desde arriba y reduciendo el espacio con el título */
+    margin-top: 120px !important;   /* Aumentá este número si querés que baje todavía más */
+    margin-bottom: 10px !important; /* Espacio mínimo y controlado justo arriba del h1 */
+    
+    filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.6)) !important;
+} /* Podés pegarlo justo acá, abajo de tus otros estilos del hero */
+.hero h1 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+}
+        .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
         .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
       nav {
     margin-top: 0 !important; /* Quitamos el margen viejo que tiraba los botones hacia abajo */
