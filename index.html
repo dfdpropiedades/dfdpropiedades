@@ -47,28 +47,33 @@ header {
 
 /* --- SECCIÓN HERO (Fondo e Imagen de Rosario) --- */
 .hero {
-    background: url('https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/rosario.JPG') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    color: white !important;
-    text-align: center !important;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
-    
-    /* Cambiamos el comportamiento de centrado para controlar los espacios a mano */
-    display: block !important; 
-    min-height: 75vh !important;
-    padding-top: 180px !important; /* Espacio para que baje todo el bloque */
-    padding-bottom: 60px !important;
-    box-sizing: border-box !important;
+    background: url('https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/rosario.JPG');
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 260px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 60px;
+
+    box-sizing: border-box;
 }
 
 .hero-logo {
-    display: block !important;
-    margin: 0 auto !important; /* Centra el logo horizontalmente */
-    max-height: 220px !important; /* Lo hacemos bien grande para notar el cambio */
-    width: auto !important;
-    margin-bottom: 10px !important; /* Lo pega a la fuerza al título de abajo */
-    filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.6)) !important;
+    max-height: 180px;
+    margin-top: 80px !important;
+    margin-bottom: 20px !important;
 }
 
 .hero h1 {
