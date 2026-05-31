@@ -10,12 +10,13 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0; padding: 0; color: #2c3e50; line-height: 1.6; background-color: #ffffff; scroll-behavior: smooth;
         }
-    header {
+   /* Cabecera superior transparente */
+header {
     background-color: transparent !important;
     padding: 20px 5% !important;
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important; /* Alinea logo y botones exactamente al mismo nivel horizontal */
+    justify-content: space-between !important; /* Caja negra a la izq, botones a la der */
+    align-items: center !important;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -23,19 +24,54 @@
     z-index: 1000 !important;
     box-sizing: border-box !important;
 }
-        .brand-logo { 
-    max-height: 180px !important; /* Un tamaño más compacto al estilo Vanzini */
-    width: auto !important; 
-}
-        .header-right {
-    display: flex !important;
-    flex-direction: row !important; /* Forza a que todo vaya en una sola línea */
-    align-items: center !important;  /* Centra verticalmente los botones con la caja negra */
-    gap: 25px !important;            /* Separa los botones entre sí */
+
+/* La caja negra fija arriba a la izquierda */
+.contact-box {
+    background: #1B3022 !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    text-align: left !important;
     margin: 0 !important;
-    padding: 0 !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
-        .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
+
+/* Contenedor de botones a la derecha */
+.header-right nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+
+/* --- SECCIÓN HERO (Fondo e Imagen de Rosario) --- */
+.hero {
+    background: url('https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/rosario.JPG') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
+    
+    /* Usamos flexbox para centrar de forma vertical el logo + textos */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    min-height: 75vh !important; /* Le da un largo imponente a la imagen */
+    padding: 160px 5% 60px 5% !important; /* Evita que el menú superior pise el logo */
+    box-sizing: border-box !important;
+}
+
+/* Nueva clase para el logo gigante en el centro de la foto */
+.hero-logo {
+    max-height: 150px !important; /* Controla el tamaño de tu logo en el centro */
+    width: auto !important;
+    margin-bottom: 25px !important; /* Deja espacio elegante antes de que empiece el título */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5)); /* Sombra suave para que resalte si el fondo es claro */
+}        .contact-box { background: #1B3022; color: white; padding: 12px 20px; border-radius: 8px; font-size: 13px; }
         .contact-box a { color: #25D366; text-decoration: none; font-weight: bold; }
       nav {
     margin-top: 0 !important; /* Quitamos el margen viejo que tiraba los botones hacia abajo */
@@ -117,24 +153,30 @@
 <body>
 
     <header>
-        <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/logo.png" alt="DFD Propiedades Logo" class="brand-logo">
-        <div class="header-right">
-            <div class="contact-box">
-                <strong>Debora Fernandez Dios</strong> | Mat. CI 468<br>
-                <a href="https://www.instagram.com/dfdpropiedades/" target="_blank">@dfdpropiedades</a>
-            </div>
-           <nav style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
-                <a href="#propiedades">Propiedades</a>
-                <a href="#calculadora">Inversiones</a>
-                <a href="#captacion" style="background: #25d366; color: white; padding: 6px 12px; border-radius: 4px; text-transform: uppercase; font-size: 12px; font-weight: bold; letter-spacing: 1px; transition: 0.3s; text-decoration: none;">Tasá tu propiedad</a>
-            </nav>
-        </div>
-    </header>
+    <!-- 1. Izquierda: Solo tu caja negra de contacto profesional -->
+    <div class="contact-box">
+        Debora Fernandez Dios | Mat. CI 468 <br>
+        <span style="color: #25D366;">@dfdpropiedades</span>
+    </div>
+
+    <!-- 2. Derecha: Tus botones de navegación alineados -->
+    <div class="header-right">
+        <nav>
+            <a href="#propiedades">PROPIEDADES</a>
+            <a href="#inversiones">INVERSIONES</a>
+            <!-- Aquí va tu botón verde de Tasá tu propiedad -->
+            <a href="https://wa.me/549341..." class="tasa-btn">TASÁ TU PROPIEDAD</a> 
+        </nav>
+    </div>
+</header>
 
     <section class="hero">
-        <h2>SOLUCIONES INMOBILIARIAS EN ROSARIO</h2>
-        <p>Acompañamos cada etapa de tu decisión inmobiliaria con experiencia y asesoramiento financiero estratégico.</p>
-    </section>
+    <!-- 3. El Logo ahora vive acá en el centro, arriba del título -->
+    <img src="https://raw.githubusercontent.com/dfdpropiedades/dfdpropiedades/main/tu-logo-verde.png" class="hero-logo" alt="DFD Desarrollos Inmobiliarios">
+    
+    <h1>SOLUCIONES INMOBILIARIAS EN ROSARIO</h1>
+    <p>Acompañamos cada etapa de tu decisión inmobiliaria con experiencia y asesoramiento financiero estratégico.</p>
+</section>
 
     <section id="propiedades" class="seccion-propiedades">
         <div id="lista-propiedades" class="grid-propiedades"></div>
